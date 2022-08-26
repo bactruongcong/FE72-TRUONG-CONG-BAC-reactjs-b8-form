@@ -1,0 +1,13 @@
+.formGroup{
+    display: flex;
+    flex-wrap: wrap;
+}
+.formItem{
+    width: 50%;
+    box-sizing: border-box;
+    padding: 15px;
+}
+.btn button{
+    color: #fff;
+    background-color: green;
+}
