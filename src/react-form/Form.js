@@ -24,8 +24,8 @@ function Form(props) {
                 
             // })
     }
-    function handleSubmit(){
-    
+    function handleSubmit(e){
+        e.preventDefault();
         if(studentSelected.id != "" ){
              dispatch({
                 type: "UPDATE_STUDENT",
@@ -68,7 +68,7 @@ function Form(props) {
             }
         }
         >
-            <form className={style.formGroup}>
+            <form onSubmit={handleSubmit} className={style.formGroup}>
                 <div className={style.formItem}>
                     <label>Mã SV</label>
                     <Input value={student.id} name="id" onChange={handleChange} placeholder="Nhập mã sinh viên"></Input>
@@ -86,7 +86,7 @@ function Form(props) {
                     <Input  value={student.email} name="email" onChange={handleChange} placeholder="Nhập Email"></Input>
                 </div>
                 <div className={`${style.btn} + ${style.formItem}`}>
-                <Button onClick={handleSubmit} type="primary">{studentSelected.id != "" ? "CẬP NHẬT THÔNG TIN" : "THÊM SINH VIÊN"}</Button>
+                <Button htmlType="submit" type="primary">{studentSelected.id != "" ? "CẬP NHẬT THÔNG TIN" : "THÊM SINH VIÊN"}</Button>
                 </div>
                 
             </form>

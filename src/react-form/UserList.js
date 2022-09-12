@@ -1,9 +1,19 @@
-import React from 'react';
-import {Card, Table, Button} from 'antd';
+import React, { useState } from 'react';
+import {Card, Table, Button, Input} from 'antd';
 import {useDispatch, useSelector} from "react-redux";
 
+const {Search} = Input;
 function UserList(props) {
-    const studentList = useSelector(state => state.student.studentList);
+    const studentList = useSelector(state => {
+        
+        if(state.fillter.name != ""){
+          return state.student.studentList.filter(item => item.name.includes(state.fillter.name));
+        }else{
+            return state.student.studentList
+        }
+       
+    });
+    const [searchName, setSearchName] = useState("");
     const dispatch = useDispatch();
     function getSelectStudent(student){
         dispatch({
@@ -47,7 +57,13 @@ function UserList(props) {
             payload: id,
         })
     }
-   
+    function handleSearchOnchange(e){
+        setSearchName(e.target.value);
+        dispatch({
+            type: "CREATE_STUDENT_FILLTER",
+            payload: e.target.value,
+        })
+    }
     return (
         <Card 
         title="Danh sách sinh viên"
@@ -58,8 +74,16 @@ function UserList(props) {
             }
         }
         >
-    
-        <Table dataSource={studentList.map( (student) =>{
+        <Search
+        placeholder="Tìm kiếm theo họ tên sinh viên"
+        allowClear
+        onChange={handleSearchOnchange}
+        style={{
+            width: 200,
+            textAlign: 'center',
+        }}
+        />
+        <Table dataSource={studentList?.map( (student) =>{
             return {...student, key: student.id}
         } )} columns={columns} />
         </Card> 

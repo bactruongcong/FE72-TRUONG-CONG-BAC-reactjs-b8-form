@@ -8,6 +8,7 @@ import {createStore, combineReducers} from 'redux';
 import { Provider } from "react-redux";
 import studentReducer from "./react-form/studentReducer";
 import studentSelectedUser from "./react-form/studentSelectedUser";
+import studentFillterReducer from "./react-form/studentFillterReducer";
 
 //b3
 const rootReducer = combineReducers({
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   //key: value
   student: studentReducer,
   studentSelect: studentSelectedUser,
+  fillter:  studentFillterReducer,
 });
 //b1
 const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
