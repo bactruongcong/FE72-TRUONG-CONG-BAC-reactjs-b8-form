@@ -5,6 +5,12 @@ import {useDispatch, useSelector} from "react-redux";
 function UserList(props) {
     const studentList = useSelector(state => state.student.studentList);
     const dispatch = useDispatch();
+    function getSelectStudent(student){
+        dispatch({
+            type: "CREATE_STUDENT_SELECTED",
+            payload: student,
+        })
+    }
     const columns = [
         {
             title: "Mã SV",
@@ -27,7 +33,7 @@ function UserList(props) {
             key: "action",
             render: (_, student) => {
                 return <>
-                    <Button>Chỉnh xửa</Button>
+                    <Button onClick={() => getSelectStudent(student)}>Chỉnh xửa</Button>
                     <Button onClick={() => deleteStudent(student.id)}>Xóa</Button>
                 </>
                   

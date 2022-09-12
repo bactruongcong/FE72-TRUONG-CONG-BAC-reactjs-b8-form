@@ -6,17 +6,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {createStore, combineReducers} from 'redux';
 import { Provider } from "react-redux";
-import questionReducer from "./TestingOnline/redux/questionReducer";
-import anwserReducer from "./TestingOnline/redux/anwserReducer"
 import studentReducer from "./react-form/studentReducer";
-import studentFormReducer from "./react-form/studentFormReducer";
+import studentSelectedUser from "./react-form/studentSelectedUser";
 
 //b3
 const rootReducer = combineReducers({
   //khai báo reducers
   //key: value
   student: studentReducer,
-  studentForm: studentFormReducer,
+  studentSelect: studentSelectedUser,
 });
 //b1
 const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

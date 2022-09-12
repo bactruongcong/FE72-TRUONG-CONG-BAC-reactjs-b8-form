@@ -11,9 +11,15 @@ const reducer = function(currentState = initialState, action){
     // nhận action , chỉnh sửa currentState
     //return newState
     switch(action.type){
-        case "UPDATE_STUDENT":
-            return currentState;
-         
+        case "CREATE_STUDENT_SELECTED":
+            return {...currentState, student: action.payload};
+        case "UPUDATE_STUDENT_SELECTED":
+            return {...currentState, student: {
+                id: "",
+                name: "",
+                phone: "",
+                email: "",
+            }};
         default:
             return currentState;
     }
