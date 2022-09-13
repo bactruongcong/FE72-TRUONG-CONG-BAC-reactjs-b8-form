@@ -24,8 +24,11 @@ const reducer = function(currentState = initialState, action){
             const index2 = cloneStudentList2.findIndex( (item) => {
                 return item.id === action.payload.id;
             });
-            if(index2 === -1) return alert("Khong co id");
-            cloneStudentList2[index2] = action.payload.student;
+            if(index2 === -1) return;
+            console.log(action.payload.student.id);
+            const {name, phone, email} = action.payload.student;
+            cloneStudentList2[index2] = {...cloneStudentList2[index2],name,phone,email};
+            
             return {...currentState, studentList: cloneStudentList2};   
         default:
             return currentState;
